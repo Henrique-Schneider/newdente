@@ -73,7 +73,7 @@ Ele foi criado com o propósito específico de aprendizado e cumprimento dos req
 Por favor, note que este projeto não é destinado a uso em produção ou em um ambiente comercial 
 sem uma devida revisão e ajuste às necessidades e requisitos específicos do ambiente de produção.
 
-Contato
+Contato:
 
 Você pode entrar em contato comigo por meio das seguintes formas:
 
@@ -83,6 +83,12 @@ Você pode entrar em contato comigo por meio das seguintes formas:
 
 Fique à vontade para entrar em contato comigo 
 se tiver alguma dúvida, sugestão ou feedback sobre o projeto!
+
+Creditos:
+Guilherme Moreira,
+Jorge Hugo,
+Pablopg,
+Cloud
 
 Agradecimentos
 
