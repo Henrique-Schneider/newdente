@@ -89,11 +89,11 @@ se tiver alguma dúvida, sugestão ou feedback sobre o projeto!
 Creditos:
 Guilherme Moreira:
     GitHub: https://github.com/GuiMoreiraC
+    E-mail: guilherme1800@gmail.com
 Jorge Hugo:
     GitHub: https://github.com/jorgehugo95
     E-mail : jorgehugo.almeida@gmail.com
-Pablopg,
-Cloud
+
 
 Agradecimentos
 
