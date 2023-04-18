@@ -76,17 +76,22 @@ sem uma devida revisão e ajuste às necessidades e requisitos específicos do a
 Contato:
 
 Você pode entrar em contato comigo por meio das seguintes formas:
-
+    
     LinkedIn: linkedin.com/in/henrique-bitencourt-ferreira-domene-schneider-b86691231
     E-mail: henriqueschneider1@gmail.com
     GitHub: https://github.com/Henrique-Schneider
+
+
 
 Fique à vontade para entrar em contato comigo 
 se tiver alguma dúvida, sugestão ou feedback sobre o projeto!
 
 Creditos:
-Guilherme Moreira,
-Jorge Hugo,
+Guilherme Moreira:
+    GitHub: https://github.com/GuiMoreiraC
+Jorge Hugo:
+    GitHub: https://github.com/jorgehugo95
+    E-mail : jorgehugo.almeida@gmail.com
 Pablopg,
 Cloud
 
