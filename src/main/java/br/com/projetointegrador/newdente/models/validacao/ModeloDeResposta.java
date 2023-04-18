@@ -7,6 +7,8 @@ public class ModeloDeResposta {
     
     private String mensagem;
 
+
+
     public String getMensagem() {
         return mensagem;
     }

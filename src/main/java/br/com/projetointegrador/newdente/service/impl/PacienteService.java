@@ -1,8 +1,9 @@
-package br.com.projetointegrador.newdente.service;
+package br.com.projetointegrador.newdente.service.impl;
 
 import br.com.projetointegrador.newdente.models.Paciente;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.repository.PacienteRepository;
+import br.com.projetointegrador.newdente.repository.IPacienteRepository;
+import br.com.projetointegrador.newdente.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,25 +12,28 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class PacienteService {
+public class PacienteService implements IPacienteService {
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private IPacienteRepository pacienteRepository;
 
     @Autowired
     private ModeloDeResposta modeloDeResposta;
 
     // método para listar todos os pacientes
+    @Override
     public Iterable<Paciente> listar() {
         return pacienteRepository.findAll();
     }
 
     // método para buscar paciente por ID
+    @Override
     public Paciente buscarPacientePorId(Long id) {
         return pacienteRepository.findById(id).orElse(null);
     }
 
     // Metodo para cadastrar paciente
+    @Override
     public ResponseEntity<?> cadastrar(Paciente paciente) {
         if (paciente.getNome().equals("")) {
             modeloDeResposta.setMensagem("O nome é obrigatório!");
@@ -54,6 +58,7 @@ public class PacienteService {
     }
 
     // método para editar paciente
+    @Override
     public ResponseEntity<?> atualizar(Long id, Paciente pacienteAtualizado) {
         Optional<Paciente> optionalPaciente = pacienteRepository.findById(id);
         if (!optionalPaciente.isPresent()) {
@@ -73,6 +78,7 @@ public class PacienteService {
     }
 
     // método para excluir paciente por ID
+    @Override
     public ResponseEntity<ModeloDeResposta> remover(long id){
         pacienteRepository.deleteById(id);
         modeloDeResposta.setMensagem("Paciente removido com sucesso!");

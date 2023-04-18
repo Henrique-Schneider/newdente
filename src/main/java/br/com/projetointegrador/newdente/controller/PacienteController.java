@@ -2,7 +2,7 @@ package br.com.projetointegrador.newdente.controller;
 
 import br.com.projetointegrador.newdente.models.Paciente;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.service.PacienteService;
+import br.com.projetointegrador.newdente.service.impl.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/pacientes")
+
 public class PacienteController {
 
     @Autowired

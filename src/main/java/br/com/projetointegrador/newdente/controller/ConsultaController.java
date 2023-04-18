@@ -1,8 +1,9 @@
 package br.com.projetointegrador.newdente.controller;
 
 import br.com.projetointegrador.newdente.models.Consulta;
+
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.service.ConsultaService;
+import br.com.projetointegrador.newdente.service.impl.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

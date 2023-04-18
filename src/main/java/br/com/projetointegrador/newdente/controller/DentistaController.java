@@ -2,12 +2,9 @@ package br.com.projetointegrador.newdente.controller;
 
 
 import br.com.projetointegrador.newdente.models.Dentista;
-import br.com.projetointegrador.newdente.models.Usuario;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.service.DentistaService;
-import br.com.projetointegrador.newdente.service.UsuarioService;
+import br.com.projetointegrador.newdente.service.impl.DentistaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

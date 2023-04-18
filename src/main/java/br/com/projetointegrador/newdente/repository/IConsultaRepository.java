@@ -10,11 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ConsultaRepository extends CrudRepository<Consulta, Long> {
-    @Query("SELECT d FROM Dentista d")
-    public List<Dentista> findAllDentistas();
+public interface IConsultaRepository extends CrudRepository<Consulta, Long> {
 
-    @Query("SELECT p FROM Paciente p")
-    public List<Paciente> findAllPacientes();
 
 }

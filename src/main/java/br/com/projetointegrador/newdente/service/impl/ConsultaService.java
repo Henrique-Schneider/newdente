@@ -1,12 +1,13 @@
-package br.com.projetointegrador.newdente.service;
+package br.com.projetointegrador.newdente.service.impl;
 
 import br.com.projetointegrador.newdente.models.Consulta;
 import br.com.projetointegrador.newdente.models.Dentista;
 import br.com.projetointegrador.newdente.models.Paciente;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.repository.ConsultaRepository;
-import br.com.projetointegrador.newdente.repository.DentistaRepository;
-import br.com.projetointegrador.newdente.repository.PacienteRepository;
+import br.com.projetointegrador.newdente.repository.IConsultaRepository;
+import br.com.projetointegrador.newdente.repository.IDentistaRepository;
+import br.com.projetointegrador.newdente.repository.IPacienteRepository;
+import br.com.projetointegrador.newdente.service.IConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,28 +18,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ConsultaService {
+public class ConsultaService implements IConsultaService {
 
     @Autowired
-    private ConsultaRepository consultaRepository;
+    private IConsultaRepository consultaRepository;
 
     @Autowired
-    private DentistaRepository dentistaRepository;
+    private IDentistaRepository dentistaRepository;
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private IPacienteRepository pacienteRepository;
 
     @Autowired
     private ModeloDeResposta modeloDeResposta;
 
+
+    @Override
     public Iterable<Consulta> listar() {
         return consultaRepository.findAll();
     }
 
+    @Override
     public Consulta buscarConsultaPorId(Long id) {
         return consultaRepository.findById(id).orElse(null);
     }
 
+    @Override
     public ResponseEntity<?> cadastrar(Consulta consulta) {
         Optional<Dentista> optionalDentista = dentistaRepository.findById(consulta.getDentista().getId());
         if (!optionalDentista.isPresent()) {
@@ -60,6 +65,7 @@ public class ConsultaService {
         return new ResponseEntity<Consulta>(consultaSalva, HttpStatus.CREATED);
     }
 
+    @Override
     public ResponseEntity<?> atualizar(Long id, Consulta consultaAtualizada) {
         // Verifica se a consulta a ser atualizada existe no banco de dados
         Consulta consultaEncontrada = consultaRepository.findById(id).orElse(null);
@@ -106,6 +112,7 @@ public class ConsultaService {
         return new ResponseEntity<ModeloDeResposta>(modeloDeResposta, HttpStatus.OK);
     }
 
+    @Override
     public ResponseEntity<ModeloDeResposta> remover(Long id) {
         Optional<Consulta> optionalConsulta = consultaRepository.findById(id);
         if (!optionalConsulta.isPresent()) {
@@ -117,12 +124,13 @@ public class ConsultaService {
         modeloDeResposta.setMensagem("Consulta excluída com sucesso!");
         return new ResponseEntity<ModeloDeResposta>(modeloDeResposta, HttpStatus.OK);
     }
-
-    public List<Dentista> findAllDentistas() {
-        return consultaRepository.findAllDentistas();
-    }
-
-    public List<Paciente> findAllPacientes() {
-        return consultaRepository.findAllPacientes();
-    }
 }
+
+
+
+
+
+
+
+
+

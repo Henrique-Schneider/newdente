@@ -1,10 +1,10 @@
-package br.com.projetointegrador.newdente.service;
+package br.com.projetointegrador.newdente.service.impl;
 
 
 import br.com.projetointegrador.newdente.models.Dentista;
-import br.com.projetointegrador.newdente.models.Usuario;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.repository.DentistaRepository;
+import br.com.projetointegrador.newdente.repository.IDentistaRepository;
+import br.com.projetointegrador.newdente.service.IDentistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,25 +13,28 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class DentistaService {
+public class DentistaService implements IDentistaService {
 
     @Autowired
-    private DentistaRepository dentistaRepository;
+    private IDentistaRepository dentistaRepository;
 
     @Autowired
     private ModeloDeResposta modeloDeResposta;
 
     // metodo para listar todos os dentistas;
+    @Override
     public Iterable<Dentista> listar() {
         return dentistaRepository.findAll();
     }
 
     // metodo para buscar por ID
+    @Override
     public Dentista buscarDentistaPorId(Long id) {
         return dentistaRepository.findById(id).orElse(null);
     }
 
     // Metodo para cadastrar dentista
+    @Override
     public ResponseEntity<?> cadastrar(Dentista dentista) {
         if (dentista.getMatricula().equals("")) {
             modeloDeResposta.setMensagem("A matrícula é obrigatória!");
@@ -54,6 +57,7 @@ public class DentistaService {
     }
 
     //  Metodo para  editar dentista
+    @Override
     public ResponseEntity<?> atualizar(Long id, Dentista dentistaAtualizado) {
         Optional<Dentista> optionalDentista = dentistaRepository.findById(id);
         if (!optionalDentista.isPresent()) {
@@ -72,6 +76,7 @@ public class DentistaService {
 
 
     //    Metodo para excluir por ID
+    @Override
     public ResponseEntity<ModeloDeResposta> remover(long id){
         dentistaRepository.deleteById(id);
         modeloDeResposta.setMensagem("dentista removido com sucesso!");

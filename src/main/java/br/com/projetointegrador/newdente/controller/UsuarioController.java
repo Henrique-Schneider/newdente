@@ -1,22 +1,25 @@
 package br.com.projetointegrador.newdente.controller;
 
 
+
 import br.com.projetointegrador.newdente.models.Usuario;
+import br.com.projetointegrador.newdente.models.dto.UsuarioDTO;
 import br.com.projetointegrador.newdente.models.validacao.ModeloDeResposta;
-import br.com.projetointegrador.newdente.service.UsuarioService;
+import br.com.projetointegrador.newdente.service.impl.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/usuarios")
+@PreAuthorize("hasRole('USER')")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    //Busca todos os usuarios
     @GetMapping("/listar")
     public Iterable<Usuario> listar(){
         return usuarioService.listar();
@@ -35,19 +38,19 @@ public class UsuarioController {
 
     //o metodo abaixo cadastra o usuario no banco
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrarUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> cadastrarDentista(@RequestBody UsuarioDTO usuario) {
         ResponseEntity<?> response = usuarioService.cadastrar(usuario);
         return response;
     }
 
-    //    o metodo abaixo atualiza as informações do usuario
+
     @PutMapping("/{id}/editar")
     public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
         ResponseEntity<?> response = usuarioService.atualizar(id, usuarioAtualizado);
         return response;
     }
 
-    // o metodo abaixo deleta um usuario por ID
+
     @DeleteMapping("/{id}/excluir")
     public ResponseEntity<ModeloDeResposta> excluir(@PathVariable Long id) {
 
@@ -56,6 +59,6 @@ public class UsuarioController {
 
     @GetMapping("/")
     public String rota(){
-        return "Api de usuarios funcionando!";
+        return "Api de dentista funcionando!";
     }
 }

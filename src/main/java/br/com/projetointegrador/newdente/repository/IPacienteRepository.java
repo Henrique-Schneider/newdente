@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface PacienteRepository extends CrudRepository<Paciente, Long> {
+public interface IPacienteRepository extends CrudRepository<Paciente, Long> {
     Optional<Paciente> findById(Long id);
     Paciente findByRg(String rg);
 }

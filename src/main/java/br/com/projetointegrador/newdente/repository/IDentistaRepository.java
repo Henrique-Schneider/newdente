@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DentistaRepository extends CrudRepository<Dentista, Long> {
+public interface IDentistaRepository extends CrudRepository<Dentista, Long> {
     Optional<Dentista> findById(Long id);
     Dentista findByMatricula(String matricula);
 

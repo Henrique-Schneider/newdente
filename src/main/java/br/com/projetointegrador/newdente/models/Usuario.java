@@ -1,31 +1,40 @@
 package br.com.projetointegrador.newdente.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String usuario;
 
     @Column(unique = true) // adiciona a validação de login único
-    @NotBlank(message = "O campo login é obrigatório")
+
     private String login;
-    @NotBlank(message = "O campo senha é obrigatório")
+
     private String senha;
-    @NotBlank(message = "O campo função é obrigatório")
+
     private String funcao;
+
+    public Usuario(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
 
     @Override
     public String toString() {
@@ -36,5 +45,40 @@ public class Usuario {
                 ", senha='" + senha + '\'' +
                 ", funcao='" + funcao + '\'' +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
