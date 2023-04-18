@@ -25,7 +25,7 @@ Tecnologias Utilizadas:
     Spring Security: módulo do Spring para segurança e autenticação de aplicativos web.
     Auth0 Java JWT: biblioteca para manipulação de JSON Web Tokens (JWT) em Java.
     SpringDoc: biblioteca para geração de documentação de API baseada em OpenAPI para aplicativos Spring MVC.
-
+    Swagger (acesso ao caminho: http://localhost:8080/swagger-ui/index.html#/ e explore /v3/api-docs)
 Instalação
 
 Siga os passos abaixo para instalar e configurar o projeto em um ambiente local:
